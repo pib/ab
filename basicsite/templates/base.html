@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>{% block title %}Welcome to the basic site.{% endblock title %}</title>
+<link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
+<script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+</head>
+<body>
+{% block content %}
+<h1>Welcome to the basic site.</h1>
+{% endblock content %}
+</body>
+</html>

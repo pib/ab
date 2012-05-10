@@ -21,3 +21,28 @@ Then the DB can be initialized and the site run.
 
     $ python manage.py syncdb     # setup DB
     $ python manage.py runserver  # run development server
+
+
+Approach
+========
+
+A/B testing implementation
+--------------------------
+
+My first thought was to see what existing A/B testing frameworks there
+are for Django. There are several, but most of them seemed to be
+overkill for this specific assignment, so I went with a simple
+from-scratch implementation. In a real-life work situation I would
+have discussed the options with other developers as well as any
+potential users of the feature to determine more specifically what
+they need before making the decision.
+
+Design
+------
+
+Visual design is not my strong suit, so I opted to start with a clean
+base via Twitter's [Bootstrap][] framework, on top of which I can
+build clean HTML and CSS.
+
+
+[Bootstrap]: http://twitter.github.com/bootstrap/
