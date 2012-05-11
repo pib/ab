@@ -1,4 +1,5 @@
 # Django settings for ab project.
+from django.core.urlresolvers import reverse_lazy
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -101,6 +102,8 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'ab.urls'
+
+LOGIN_REDIRECT_URL = reverse_lazy('home')
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'ab.wsgi.application'
