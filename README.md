@@ -31,6 +31,17 @@ Clearing cookies, opening an "incognito mode" window, or running more
 than one browser are all acceptable ways to test the random
 alternative selection.
 
+Visit the main page several times with several different sessions, and
+register a few times as well (the registration form doesn't actually
+DO anything but log that a registration happened, it's just there as
+an example of how templates can be swapped out with this system).
+
+Now, log in as that same admin use created before, click the Admin
+link at the top-right of the page, then from the admin site, click
+"Tests". The test should be there, with numbers showing how many views
+each of the options got, and what percentage of those views led to
+registrations.
+
 
 Approach
 ========
