@@ -22,6 +22,15 @@ Then the DB can be initialized and the site run.
     $ python manage.py syncdb     # setup DB
     $ python manage.py runserver  # run development server
 
+The "syncdb" command will ask if you want to add a superuser. Go ahead
+and do so, so you will have access to the admin interface. It will
+also load in an initial registration form test, which will be loaded
+by the home page of the example site.
+
+Clearing cookies, opening an "incognito mode" window, or running more
+than one browser are all acceptable ways to test the random
+alternative selection.
+
 
 Approach
 ========
@@ -43,6 +52,22 @@ basis, remembering the selection in the user's session. The template
 replacement is done via the process_template_response middleware
 method, which allows for simply setting a different template name to
 be used before the template is rendered.
+
+At the moment, there is one view logged per time one registration form
+is viewed, even if that same user has viewed it before (though they
+will see the same form each time, as long as they have the same
+session). It might make sense to modify this behavior to only logging
+one "view" per user, to change the metric from "number of times
+registration happened after someone viewed this form" to "number of
+people who saw this form who registered".
+
+When registration is completed, a "goal reached" is logged. The
+generic name is used since there's nothing really restricting this app
+to only working for registration form comparisons. In its current
+form, it would work just as well for any page where the user can POST
+a form. It would be fairly easy to allow for even more generic goals,
+such as simply visiting a certain page, though that would require some
+more information to be stored in the Test model.
 
 Visual Design
 -------------
