@@ -10,8 +10,8 @@ class TestMiddleware(object):
         session.
         """
         try:
-            test = Test.objects.get(template_name=response.template_name,
-                                         active=True)
+            test = Test.objects.get(template_name=response.template_name[0],
+                                    active=True)
         except Test.DoesNotExist:
             return response
 

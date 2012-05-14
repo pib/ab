@@ -8,7 +8,8 @@ class Test(models.Model):
     Technically, they are A/B/N tests, because they may have more than
     one alternative.
     """
-    active = models.BooleanField(False, db_index=True)
+    active = models.BooleanField(default=False, db_index=True,
+                                 help_text='Is this test currently running?')
     template_name = models.CharField(max_length=128, db_index=True)
 
     def __unicode__(self):
