@@ -100,7 +100,7 @@ MIDDLEWARE_CLASSES = (
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 
-    'abtest.middleware.TestMiddleware',
+    'ab_test.middleware.TestMiddleware',
 )
 
 ROOT_URLCONF = 'ab.urls'
@@ -129,7 +129,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
 
     'basicsite',
-    'abtest',
+    'ab_test',
 )
 
 # A sample logging configuration. The only tangible logging

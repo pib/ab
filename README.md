@@ -37,8 +37,15 @@ have discussed the options with other developers as well as any
 potential users of the feature to determine more specifically what
 they need before making the decision.
 
-Design
-------
+This A/B testing implementation is done with a custom Django
+middleware which selects an alternative template on a per-session
+basis, remembering the selection in the user's session. The template
+replacement is done via the process_template_response middleware
+method, which allows for simply setting a different template name to
+be used before the template is rendered.
+
+Visual Design
+-------------
 
 Visual design is not my strong suit, so I opted to start with a clean
 base via Twitter's [Bootstrap][] framework, on top of which I can

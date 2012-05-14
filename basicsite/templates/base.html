@@ -1,11 +1,13 @@
+{% load static %}
+{% get_static_prefix as STATIC_PREFIX %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <title>{% block title %}Welcome to the basic site.{% endblock title %}</title>
-  <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.css">
-  <link rel="stylesheet" href="{{ STATIC_URL }}css/layout.css">
-  <script src="{{ STATIC_URL }}js/jquery.js"></script>
-  <script src="{{ STATIC_URL }}js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="{{ STATIC_PREFIX }}css/bootstrap.css">
+  <link rel="stylesheet" href="{{ STATIC_PREFIX }}css/layout.css">
+  <script src="{{ STATIC_PREFIX }}js/jquery.js"></script>
+  <script src="{{ STATIC_PREFIX }}js/bootstrap.min.js"></script>
 </head>
 <body>
   <div class="navbar navbar-fixed-top">

@@ -1,4 +1,24 @@
-{% extends "base.html" %}
-{% block content %}
-this is register_a.html
-{% endblock content %}
+{% extends "register.html" %}
+{% block form %}
+<form action="{% url register %}" method="POST" class="form-horizontal">
+  {% csrf_token %}
+  <input type="hidden" name="ab_test_id" value="{{ ab_test_id }}">
+  <div class="control-group">
+    <label class="control-label" for="name">Name</label>
+    <div class="controls">
+      <input id="name" class="input-xlarge" type="text">
+      <p class="help-block">Let us know your name, so we know what to call you</p>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="email">Email</label>
+    <div class="controls">
+      <input id="email" class="input-xlarge" type="text">
+      <p class="help-block">We need to know where to send your registration confirmation!</p>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button type="submit" class="btn btn-primary">Register</button>
+  </div>
+</form>
+{% endblock form %}

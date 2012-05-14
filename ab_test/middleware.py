@@ -15,7 +15,7 @@ class TestMiddleware(object):
         except Test.DoesNotExist:
             return response
 
-        response.context_data['abtest_id'] = test.pk
+        response.context_data['ab_test_id'] = test.pk
         alternative = test.get_alternative(request.session)
 
         if alternative:

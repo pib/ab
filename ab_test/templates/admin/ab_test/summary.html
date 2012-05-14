@@ -1,0 +1,17 @@
+<table>
+  <thead>
+    <tr>
+      <th>Template</th><th>Views</th><th>Goals reached</th><th>Conversion rate</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for alternative in alternatives %}
+      <tr>
+        <td>{{ alternative.template_name }}</td>
+        <td>{{ alternative.views }}</td>
+        <td>{{ alternative.goals }}</td>
+        <td>{{ alternative.percentage }}%</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>

@@ -1,4 +1,11 @@
-{% extends "base.html" %}
-{% block content %}
-this is register_b.html
-{% endblock content %}
+{% extends "register.html" %}
+{% block form %}
+<form action="{% url register %}" method="POST" class="well
+form-inline">
+  {% csrf_token %}
+  <input type="hidden" name="ab_test_id" value="{{ ab_test_id }}">
+  <input type="text" placeholder="Name">
+  <input type="text" placeholder="Email">
+  <button type="submit" class="btn">Register</button>
+</form>
+{% endblock form %}

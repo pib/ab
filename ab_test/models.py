@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.loader import render_to_string
 
 
 class Test(models.Model):
@@ -22,7 +23,7 @@ class Test(models.Model):
         current session, or return None if there are no alternatives
         associated with this test.
         """
-        key = 'abtest_alternative:%s' % self.pk
+        key = 'ab_test_alternative:%s' % self.pk
 
         try:
             return Alternative.objects.get(pk=session[key])
@@ -33,6 +34,51 @@ class Test(models.Model):
                 return alternative
             except IndexError:
                 return None
+
+    @classmethod
+    def goal(cls, request):
+        """ Convenience method to mark a goal as reached based on a
+        submitted form.
+        """
+        test_id = request.POST['ab_test_id']
+        if not test_id:
+            return
+        try:
+            test = cls.objects.get(pk=test_id)
+        except cls.DoesNotExist:
+            return
+        alternative = test.get_alternative(request.session)
+        alternative.log_goal_reached()
+
+    def outcome_summary(self):
+        """ Generate a summary of this test's outcome.
+        """
+        total_views = 0
+        total_goals = 0
+        alternatives = []
+        for alternative in self.alternatives.all():
+            views = alternative.log_entries.filter(action='V').count()
+            goals = alternative.log_entries.filter(action='G').count()
+            if views:
+                percentage = 100.0 * goals / views
+            else:
+                percentage = 0
+            alternatives.append({
+                'template_name': alternative.template_name,
+                'views': views, 'goals': goals,
+                'percentage': percentage,
+            })
+            total_views += views
+            total_goals += goals
+
+        # Sort by the conversion percentage to put the best at the top
+        alternatives.sort(key=lambda alt: alt['percentage'], reverse=True)
+        return render_to_string('admin/ab_test/summary.html', {
+            'test': self,
+            'alternatives': alternatives,
+        })
+
+    outcome_summary.allow_tags = True
 
 
 class Alternative(models.Model):

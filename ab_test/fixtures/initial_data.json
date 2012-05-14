@@ -1,0 +1,26 @@
+[
+    {
+        "fields": {
+            "active": true, 
+            "template_name": "register.html"
+        }, 
+        "model": "ab_test.test", 
+        "pk": 1
+    }, 
+    {
+        "fields": {
+            "template_name": "register_a.html", 
+            "test": 1
+        }, 
+        "model": "ab_test.alternative", 
+        "pk": 1
+    }, 
+    {
+        "fields": {
+            "template_name": "register_b.html", 
+            "test": 1
+        }, 
+        "model": "ab_test.alternative", 
+        "pk": 2
+    }
+]
