@@ -1,3 +1,5 @@
+**Don't use this as-is. It's way out of date and was just done as a quick proof-of-concept.**
+
 A simple Django app to A/B test alternative registration forms.
 
 
